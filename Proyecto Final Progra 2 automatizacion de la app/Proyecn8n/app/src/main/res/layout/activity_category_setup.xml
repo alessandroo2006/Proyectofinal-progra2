@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8F9FA">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginBottom="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📊"
+                    android:textSize="48sp"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:id="@+id/txt_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Configuración de Categorías"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#2C3E50"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/txt_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Distribuye tu salario mensual entre las diferentes categorías de gastos:"
+                    android:textSize="16sp"
+                    android:textColor="#7F8C8D"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+            <!-- Budget Summary -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/balance_card_background"
+                android:padding="20dp"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:id="@+id/txt_total_budget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Asignado: Q 0.00"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#2C3E50"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/txt_remaining_budget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Restante: Q 0.00"
+                    android:textSize="14sp"
+                    android:textColor="#27AE60" />
+
+            </LinearLayout>
+
+            <!-- Categories Container -->
+            <LinearLayout
+                android:id="@+id/categories_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Alimentos -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/category_item_background"
+                    android:padding="16dp"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🍎 Alimentos"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#2C3E50" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Q"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#3498DB"
+                            android:layout_marginEnd="4dp" />
+
+                        <EditText
+                            android:id="@+id/edit_alimentos"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:hint="0.00"
+                            android:textSize="14sp"
+                            android:textColor="#2C3E50"
+                            android:background="@drawable/edit_text_small_background"
+                            android:padding="8dp"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:gravity="center" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Suscripciones -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/category_item_background"
+                    android:padding="16dp"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="📱 Suscripciones"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#2C3E50" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Q"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#3498DB"
+                            android:layout_marginEnd="4dp" />
+
+                        <EditText
+                            android:id="@+id/edit_suscripciones"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:hint="0.00"
+                            android:textSize="14sp"
+                            android:textColor="#2C3E50"
+                            android:background="@drawable/edit_text_small_background"
+                            android:padding="8dp"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:gravity="center" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Juegos -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/category_item_background"
+                    android:padding="16dp"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🎮 Juegos"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#2C3E50" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Q"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#3498DB"
+                            android:layout_marginEnd="4dp" />
+
+                        <EditText
+                            android:id="@+id/edit_juegos"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:hint="0.00"
+                            android:textSize="14sp"
+                            android:textColor="#2C3E50"
+                            android:background="@drawable/edit_text_small_background"
+                            android:padding="8dp"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:gravity="center" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Familia -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/category_item_background"
+                    android:padding="16dp"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="👨‍👩‍👧‍👦 Familia"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#2C3E50" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Q"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#3498DB"
+                            android:layout_marginEnd="4dp" />
+
+                        <EditText
+                            android:id="@+id/edit_familia"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:hint="0.00"
+                            android:textSize="14sp"
+                            android:textColor="#2C3E50"
+                            android:background="@drawable/edit_text_small_background"
+                            android:padding="8dp"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:gravity="center" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Emergencias -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/category_item_background"
+                    android:padding="16dp"
+                    android:layout_marginBottom="24dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🚨 Gastos de Emergencias"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#2C3E50" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Q"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#3498DB"
+                            android:layout_marginEnd="4dp" />
+
+                        <EditText
+                            android:id="@+id/edit_emergencias"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:hint="0.00"
+                            android:textSize="14sp"
+                            android:textColor="#2C3E50"
+                            android:background="@drawable/edit_text_small_background"
+                            android:padding="8dp"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:gravity="center" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Finish Button -->
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Finalizar Configuración"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/primary_button_background"
+        android:padding="16dp"
+        android:layout_margin="24dp" />
+
+</LinearLayout>

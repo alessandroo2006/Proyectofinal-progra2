@@ -1,0 +1,164 @@
+=================================================================
+📱 CÓDIGO PARA PROBAR EL WEBHOOK INMEDIATAMENTE
+=================================================================
+
+OPCIÓN 1: Agregar en MainActivity.onCreate() (Línea 67)
+---------------------------------------------------------
+Agrega esta línea después de "testWebhookConnection();" (línea 67):
+
+    probarNuevoWebhook();
+
+Luego agrega este método al final de la clase MainActivity:
+
+    private void probarNuevoWebhook() {
+        WebhookHelper webhook = new WebhookHelper();
+        
+        webhook.sendGetRequest(new WebhookHelper.WebhookListener() {
+            @Override
+            public void onSuccess(String response, int code) {
+                runOnUiThread(() -> {
+                    Toast.makeText(MainActivity.this, 
+                        "✅ Webhook conectado - Código: " + code, 
+                        Toast.LENGTH_LONG).show();
+                    Log.d(TAG, "Respuesta webhook: " + response);
+                });
+            }
+            
+            @Override
+            public void onError(String error, int code) {
+                runOnUiThread(() -> {
+                    Toast.makeText(MainActivity.this, 
+                        "❌ Error: " + error + " (Código: " + code + ")", 
+                        Toast.LENGTH_LONG).show();
+                    Log.e(TAG, "Error webhook: " + error);
+                });
+            }
+        });
+    }
+
+
+=================================================================
+OPCIÓN 2: Crear un Botón de Prueba
+=================================================================
+
+1. En activity_main.xml, agrega este botón:
+
+    <Button
+        android:id="@+id/btn_test_webhook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Probar Webhook"
+        android:layout_margin="16dp" />
+
+2. En MainActivity.initializeViews() (línea 76), agrega:
+
+    Button btnTestWebhook = findViewById(R.id.btn_test_webhook);
+
+3. En MainActivity.setupClickListeners() (línea 314), agrega:
+
+    btnTestWebhook.setOnClickListener(v -> {
+        WebhookHelper webhook = new WebhookHelper();
+        
+        webhook.sendGetRequest(new WebhookHelper.WebhookListener() {
+            @Override
+            public void onSuccess(String response, int code) {
+                Toast.makeText(MainActivity.this, 
+                    "✅ Conectado exitosamente", 
+                    Toast.LENGTH_SHORT).show();
+            }
+            
+            @Override
+            public void onError(String error, int code) {
+                Toast.makeText(MainActivity.this, 
+                    "❌ Error: " + error, 
+                    Toast.LENGTH_SHORT).show();
+            }
+        });
+    });
+
+
+=================================================================
+OPCIÓN 3: Código Independiente (Más Simple)
+=================================================================
+
+Puedes probar desde cualquier Activity con solo 1 línea:
+
+new WebhookHelper().sendGetRequest(new WebhookHelper.WebhookListener() {
+    public void onSuccess(String response, int code) {
+        Toast.makeText(getApplicationContext(), "✅ OK", Toast.LENGTH_SHORT).show();
+    }
+    public void onError(String error, int code) {
+        Toast.makeText(getApplicationContext(), "❌ " + error, Toast.LENGTH_SHORT).show();
+    }
+});
+
+
+=================================================================
+OPCIONES DE ENVÍO
+=================================================================
+
+GET (sin datos):
+    webhook.sendGetRequest(listener);
+
+POST (con datos):
+    String datos = "{\"usuario\": \"test\", \"accion\": \"prueba\"}";
+    webhook.sendPostRequest(datos, listener);
+
+POST (vacío):
+    webhook.sendPostRequest(null, listener);
+
+
+=================================================================
+QUÉ ESPERAR
+=================================================================
+
+✅ Conexión exitosa:
+   - Toast: "Webhook conectado - Código: 200"
+   - Log: Muestra la respuesta del servidor
+
+❌ Error 404:
+   - Toast: "Error: Código de error: 404"
+   - Significa: URL incorrecta o webhook inactivo
+
+❌ Error de conexión:
+   - Toast: "Error: Failed to connect..."
+   - Significa: Sin internet o servidor no responde
+
+
+=================================================================
+ARCHIVOS CREADOS
+=================================================================
+
+✅ WebhookHelper.java
+   - Clase principal para conectar al webhook
+   - Ubicación: app/src/main/java/com/example/prueba/
+
+✅ EjemploConexionWebhook.java
+   - Ejemplos de uso con diferentes métodos
+   - Ubicación: app/src/main/java/com/example/prueba/
+
+✅ GUIA_CONEXION_WEBHOOK.md
+   - Documentación completa en español
+   - Ubicación: PRUEBA221/
+
+
+=================================================================
+CONFIGURACIÓN YA LISTA
+=================================================================
+
+✅ AndroidManifest.xml
+   - Permisos INTERNET y ACCESS_NETWORK_STATE (líneas 5-6)
+
+✅ build.gradle.kts
+   - OkHttp 4.12.0 (línea 68)
+   - OkHttp Logging Interceptor (línea 69)
+
+
+=================================================================
+¡LISTO PARA USAR! 🚀
+=================================================================
+
+Solo elige una de las opciones anteriores y prueba.
+La conexión se ejecuta automáticamente en segundo plano.
+No necesitas AsyncTask, Thread, ni configuración adicional.
+

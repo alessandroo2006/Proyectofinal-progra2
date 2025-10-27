@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/alert_card_background"
+    android:padding="16dp"
+    android:layout_marginBottom="12dp">
+
+    <!-- Mission Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/mission_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nombre de Misión"
+            android:textColor="#2C3E50"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/mission_reward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎁 Recompensa"
+            android:textColor="#27AE60"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Mission Description -->
+    <TextView
+        android:id="@+id/mission_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripción de la misión"
+        android:textColor="#7F8C8D"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Progress Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/mission_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Progreso: Q0 / Q100 (0%)"
+            android:textColor="#3498DB"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btn_claim_reward"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="Reclamar"
+            android:textSize="12sp"
+            android:background="@drawable/primary_button_background"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

@@ -1,0 +1,951 @@
+{
+  "name": "Sistema de Gestión de Suscripciones",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Switch – Seleccionar Ruta",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -416,
+        336
+      ],
+      "id": "6cfe78dd-2995-4324-8353-8792b37865c9"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        400
+      ],
+      "id": "3cd48937-774f-470a-92ac-8b25d1cd7ce1",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        160,
+        592
+      ],
+      "id": "678517fb-3a96-437a-bd1f-b09f570acdb2",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "vLAonx8GEFWTb40M",
+          "name": "Groq account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        736,
+        176
+      ],
+      "id": "08a2e953-7d39-42b8-8402-5188547ef9ec",
+      "name": "Send a message",
+      "webhookId": "dc89abef-5115-4115-aa34-a6d1edd3cdf0",
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "name": "Switch – Seleccionar Ruta1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        480,
+        368
+      ],
+      "id": "6d8bcddf-843d-4f69-a9ff-d2f6b931b366"
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        736,
+        400
+      ],
+      "id": "27449ef7-e0e1-4886-ad3e-cf8f0870430e",
+      "name": "Send a text message",
+      "webhookId": "283b833c-9c90-4433-ba31-aa1a1cbac97b",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1M3Qi0mA5VBf5_By5OrjrH5d216IoxDhHRLQ8uBO8sMs/edit?usp=sharing",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M3Qi0mA5VBf5_By5OrjrH5d216IoxDhHRLQ8uBO8sMs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "SUSCRIPCIONES"
+          ],
+          "schema": [
+            {
+              "id": "GASTOS",
+              "displayName": "GASTOS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SUSCRIPCIONES",
+              "displayName": "SUSCRIPCIONES",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -112,
+        208
+      ],
+      "id": "46166eac-5336-491b-af9c-24853adab214",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z8m1M68orzC6PYzg",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1M3Qi0mA5VBf5_By5OrjrH5d216IoxDhHRLQ8uBO8sMs/edit?usp=sharing",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M3Qi0mA5VBf5_By5OrjrH5d216IoxDhHRLQ8uBO8sMs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "GASTOS"
+          ],
+          "schema": [
+            {
+              "id": "GASTOS",
+              "displayName": "GASTOS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SUSCRIPCIONES",
+              "displayName": "SUSCRIPCIONES",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -112,
+        336
+      ],
+      "id": "a16767af-9f7b-42bc-81e2-e04b94d8da19",
+      "name": "Update row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z8m1M68orzC6PYzg",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1M3Qi0mA5VBf5_By5OrjrH5d216IoxDhHRLQ8uBO8sMs"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M3Qi0mA5VBf5_By5OrjrH5d216IoxDhHRLQ8uBO8sMs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "ASISTENTE VOZ"
+          ],
+          "schema": [
+            {
+              "id": "GASTOS",
+              "displayName": "GASTOS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "SUSCRIPCIONES",
+              "displayName": "SUSCRIPCIONES",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ASISTENTE VOZ",
+              "displayName": "ASISTENTE VOZ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "OFERTAS",
+              "displayName": "OFERTAS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -112,
+        624
+      ],
+      "id": "ffba3bfc-923a-48a5-aa8f-75dcaf332a50",
+      "name": "Update row in sheet2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "4XVGxlYjNGxnGx9Q",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1M3Qi0mA5VBf5_By5OrjrH5d216IoxDhHRLQ8uBO8sMs"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1M3Qi0mA5VBf5_By5OrjrH5d216IoxDhHRLQ8uBO8sMs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "OFERTAS"
+          ],
+          "schema": [
+            {
+              "id": "GASTOS",
+              "displayName": "GASTOS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "SUSCRIPCIONES",
+              "displayName": "SUSCRIPCIONES",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ASISTENTE VOZ",
+              "displayName": "ASISTENTE VOZ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "OFERTAS",
+              "displayName": "OFERTAS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -112,
+        480
+      ],
+      "id": "83e78f09-e0ce-4ab7-914a-93e7d038387e",
+      "name": "Update row in sheet3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "4XVGxlYjNGxnGx9Q",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "942559e5-d4e4-4ad6-a384-9fa8f4b0f2f6",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -640,
+        544
+      ],
+      "id": "c6fc4aaf-407e-4f22-b36e-d95b6c70efb1",
+      "name": "Webhook",
+      "webhookId": "942559e5-d4e4-4ad6-a384-9fa8f4b0f2f6"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1X6zUvCHXqtFV-ICipWwZat7cs6F25Zqb6nRACheTUXc",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1X6zUvCHXqtFV-ICipWwZat7cs6F25Zqb6nRACheTUXc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "cliente": "={{ $('Webhook').item.json.body.data.cliente }}",
+            "precio": "={{ $('Webhook').item.json.body.data.precio }}",
+            "frecuencia": "={{ $('Webhook').item.json.body.data.frecuencia }}",
+            "herramienta": "={{ $('Webhook').item.json.body.data.herramienta }}",
+            "fecha_inicio": "={{ $('Webhook').item.json.body.data.fecha_inicio }}",
+            "fecha_vencimiento": "={{ $('Webhook').item.json.body.data.fecha_vencimiento }}",
+            "plan": "={{ $('Webhook').item.json.body.data.plan }}",
+            "email": "={{ $('Webhook').item.json.body.data.email }}"
+          },
+          "matchingColumns": [
+            "cliente"
+          ],
+          "schema": [
+            {
+              "id": "cliente",
+              "displayName": "cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "precio",
+              "displayName": "precio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "frecuencia",
+              "displayName": "frecuencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "herramienta",
+              "displayName": "herramienta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fecha_inicio",
+              "displayName": "fecha_inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fecha_vencimiento",
+              "displayName": "fecha_vencimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "plan",
+              "displayName": "plan",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "name": "Guardar en Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        -112,
+        768
+      ],
+      "id": "7bfb4114-501c-4540-9491-4e0055f4ac0a",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z8m1M68orzC6PYzg",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -448,
+        976
+      ],
+      "id": "5addd8ea-46ee-4443-8190-88729d140e53",
+      "name": "Verificar Diariamente"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1X6zUvCHXqtFV-ICipWwZat7cs6F25Zqb6nRACheTUXc",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        -272,
+        976
+      ],
+      "id": "e2c48ed9-609e-4729-ba09-42580b7b139d",
+      "name": "Leer Suscripciones",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "z8m1M68orzC6PYzg",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "filter-001",
+              "leftValue": "={{ \n  const fechaVenc = new Date($json.fecha_vencimiento);\n  const hoy = new Date();\n  const manana = new Date(hoy);\n  manana.setDate(hoy.getDate() + 1);\n  \n  // Comparar solo la fecha (sin hora)\n  fechaVenc.setHours(0,0,0,0);\n  manana.setHours(0,0,0,0);\n  \n  return fechaVenc.getTime() === manana.getTime();\n}}",
+              "rightValue": "=true",
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        -112,
+        976
+      ],
+      "id": "6f22bcf0-f827-443b-bbd4-c137f5cb4ba2",
+      "name": "Filtrar Vencimiento Mañana"
+    },
+    {
+      "parameters": {
+        "sendTo": "godoyjostyn08@gmail.com",
+        "subject": "=Recordatorio: Tu suscripción de {{ $json.herramienta }} vence mañana",
+        "emailType": "text",
+        "message": "={{ $('Webhook').item.json.body.data.plan}}\n{{ $('Webhook').item.json.body.data.fecha_vencimiento }}\n{{ $('Webhook').item.json.body.data.precio }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        144,
+        896
+      ],
+      "id": "220ee835-1452-4ab2-951c-f6b46ca6eed1",
+      "name": "Enviar Recordatorio por Email",
+      "webhookId": "29aa2b36-2625-413b-a229-13ac6e368f05",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YjMHoupLDKTHhmNn",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "=@Ghost_10_0_1",
+        "text": "=Tu suscripcion vencera pronto Echale un ojo!!",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        496,
+        896
+      ],
+      "id": "e6f9453b-7121-4545-9719-c113eef11cb0",
+      "name": "Send a text message1",
+      "webhookId": "610be6f9-6e98-4858-ac81-c3766361757b",
+      "credentials": {
+        "telegramApi": {
+          "id": "PcP4kGKMwn20QC8m",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        192,
+        1072
+      ],
+      "id": "e485c06d-38ff-495a-920a-2e8993b3cb45",
+      "name": "Telegram Trigger1",
+      "webhookId": "b1f29979-145e-45c6-a5c2-f181b8cdcafb",
+      "credentials": {
+        "telegramApi": {
+          "id": "PcP4kGKMwn20QC8m",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "942559e5-d4e4-4ad6-a384-9fa8f4b0f2f6",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -640,
+        688
+      ],
+      "id": "c8cea237-fe86-4e16-9609-ce87d5527f03",
+      "name": "Webhook1",
+      "webhookId": "942559e5-d4e4-4ad6-a384-9fa8f4b0f2f6"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Switch – Seleccionar Ruta": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update row in sheet3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update row in sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Switch – Seleccionar Ruta1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch – Seleccionar Ruta1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet3": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Guardar en Google Sheets1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch – Seleccionar Ruta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar en Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Enviar Recordatorio por Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar Diariamente": {
+      "main": [
+        [
+          {
+            "node": "Leer Suscripciones",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer Suscripciones": {
+      "main": [
+        [
+          {
+            "node": "Filtrar Vencimiento Mañana",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtrar Vencimiento Mañana": {
+      "main": [
+        [
+          {
+            "node": "Enviar Recordatorio por Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar Recordatorio por Email": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "14f7855f-a986-4898-86c1-8a586eb526a6",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b6234efe681359902f40fe28d263579fbfcf73d229d32ae59e94897f3d9fa99b"
+  },
+  "id": "8XnScrBtcbfl9YQU",
+  "tags": []
+}

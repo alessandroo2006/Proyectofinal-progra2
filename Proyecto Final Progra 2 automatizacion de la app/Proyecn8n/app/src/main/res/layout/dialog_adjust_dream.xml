@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:padding="24dp"
+    android:layout_margin="16dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ajustar Sueño"
+            android:textColor="#2C3E50"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_close_dialog"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:text="×"
+            android:textColor="#7F8C8D"
+            android:textSize="20sp"
+            android:background="@drawable/close_button_background"
+            android:minWidth="0dp"
+            android:minHeight="0dp" />
+
+    </LinearLayout>
+
+    <!-- Description -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modifica los detalles de tu sueño para ajustarlo a tus necesidades actuales."
+        android:textColor="#7F8C8D"
+        android:textSize="14sp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Dream Name -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del sueño"
+        android:textColor="#2C3E50"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/et_dream_name"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Ej: Auto nuevo"
+        android:textColor="#2C3E50"
+        android:textColorHint="#7F8C8D"
+        android:textSize="14sp"
+        android:background="@drawable/input_field_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Target Amount -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monto objetivo"
+        android:textColor="#2C3E50"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/et_target_amount"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="0.00"
+        android:inputType="numberDecimal"
+        android:textColor="#2C3E50"
+        android:textColorHint="#7F8C8D"
+        android:textSize="14sp"
+        android:background="@drawable/input_field_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Deadline -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha límite"
+        android:textColor="#2C3E50"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/input_field_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp">
+
+        <EditText
+            android:id="@+id/et_deadline"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="dd/mm/aaaa"
+            android:inputType="date"
+            android:textColor="#2C3E50"
+            android:textColorHint="#7F8C8D"
+            android:textSize="14sp"
+            android:background="#00000000"
+            android:padding="0dp" />
+
+        <Button
+            android:id="@+id/btn_calendar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:text="📅"
+            android:textSize="16sp"
+            android:background="#00000000"
+            android:minWidth="0dp"
+            android:minHeight="0dp" />
+
+    </LinearLayout>
+
+    <!-- Priority -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prioridad"
+        android:textColor="#2C3E50"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/input_field_background"
+        android:padding="12dp"
+        android:layout_marginBottom="24dp">
+
+        <Spinner
+            android:id="@+id/spinner_priority"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="▼"
+            android:textColor="#7F8C8D"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Cancelar"
+            android:textColor="#7F8C8D"
+            android:textSize="16sp"
+            android:background="@drawable/adjust_button_background"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btn_save_changes"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Guardar Cambios"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/create_button_background" />
+
+    </LinearLayout>
+
+</LinearLayout>

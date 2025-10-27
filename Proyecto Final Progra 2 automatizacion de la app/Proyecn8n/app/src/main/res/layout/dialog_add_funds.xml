@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Dream Info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_card_background"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp"
+        android:elevation="2dp">
+
+        <TextView
+            android:id="@+id/txt_dream_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Casa Nueva"
+            android:textColor="#212121"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/txt_current_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q 15,000 / Q 50,000 (30%)"
+            android:textColor="#4CAF50"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif" />
+
+    </LinearLayout>
+
+    <!-- Amount Input -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cantidad a agregar"
+        android:textColor="#424242"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/et_amount_to_add"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="0"
+        android:inputType="numberDecimal"
+        android:textColor="#212121"
+        android:textColorHint="#757575"
+        android:textSize="16sp"
+        android:background="@drawable/rounded_card_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif" />
+
+    <!-- Quick Amount Buttons -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cantidades rápidas"
+        android:textColor="#424242"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btn_quick_50"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="Q 50"
+            android:textColor="#4CAF50"
+            android:textSize="12sp"
+            android:background="@drawable/button_adjust_background"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="sans-serif-medium" />
+
+        <Button
+            android:id="@+id/btn_quick_100"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="Q 100"
+            android:textColor="#4CAF50"
+            android:textSize="12sp"
+            android:background="@drawable/button_adjust_background"
+            android:layout_marginHorizontal="4dp"
+            android:fontFamily="sans-serif-medium" />
+
+        <Button
+            android:id="@+id/btn_quick_200"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="Q 200"
+            android:textColor="#4CAF50"
+            android:textSize="12sp"
+            android:background="@drawable/button_adjust_background"
+            android:layout_marginStart="4dp"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
+
+    <!-- Add Button -->
+    <Button
+        android:id="@+id/btn_add_amount"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Agregar"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:background="@drawable/button_add_funds_background"
+        android:fontFamily="sans-serif-medium" />
+
+</LinearLayout>

@@ -1,0 +1,334 @@
+{
+  "name": "Finanzas App - Webhook Receiver",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "webhook-test/1536943f-27e3-4934-bd8c-1b3a4cc89b93",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-node",
+      "name": "Webhook Entrada",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "1536943f-27e3-4934-bd8c-1b3a4cc89b93",
+      "notes": "Recibe peticiones POST desde la app Android"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.body.action}}",
+              "operation": "equals",
+              "value2": "test_connection"
+            }
+          ]
+        }
+      },
+      "id": "if-test-connection",
+      "name": "Es Test?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.body.action}}",
+              "operation": "equals",
+              "value2": "financial_data_update"
+            }
+          ]
+        }
+      },
+      "id": "if-financial-data",
+      "name": "Son Datos Financieros?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [450, 500]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.body.action}}",
+              "operation": "equals",
+              "value2": "financial_tools_accessed"
+            }
+          ]
+        }
+      },
+      "id": "if-tools-access",
+      "name": "Acceso a Herramientas?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [450, 700]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "message",
+              "value": "Test de conexión recibido correctamente"
+            },
+            {
+              "name": "userId",
+              "value": "={{$json.body.userId}}"
+            },
+            {
+              "name": "timestamp",
+              "value": "={{$json.body.timestamp}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "process-test",
+      "name": "Procesar Test",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [650, 200]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "userId",
+              "value": "={{$json.body.userId}}"
+            },
+            {
+              "name": "total_balance",
+              "value": "={{$json.body.data.total_balance}}"
+            },
+            {
+              "name": "monthly_income",
+              "value": "={{$json.body.data.monthly_income}}"
+            },
+            {
+              "name": "monthly_expenses",
+              "value": "={{$json.body.data.monthly_expenses}}"
+            },
+            {
+              "name": "monthly_savings",
+              "value": "={{$json.body.data.monthly_savings}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "process-financial",
+      "name": "Procesar Datos Financieros",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [650, 500]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "userId",
+              "value": "={{$json.body.userId}}"
+            },
+            {
+              "name": "event",
+              "value": "Usuario accedió a herramientas financieras"
+            },
+            {
+              "name": "timestamp",
+              "value": "={{$json.body.timestamp}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "process-tools",
+      "name": "Procesar Acceso Herramientas",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [650, 700]
+    },
+    {
+      "parameters": {
+        "operation": "insert",
+        "table": "financial_events",
+        "columns": "userId,event_type,event_data,timestamp",
+        "additionalFields": {}
+      },
+      "id": "save-to-db",
+      "name": "Guardar en Base de Datos",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 1,
+      "position": [850, 500],
+      "notes": "Opcional: Guarda los eventos en PostgreSQL",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"success\",\n  \"message\": \"Data received successfully\",\n  \"data\": {\n    \"received_at\": \"{{new Date().toISOString()}}\",\n    \"action\": \"{{$json.body.action}}\",\n    \"userId\": \"{{$json.body.userId}}\"\n  }\n}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "webhook-response",
+      "name": "Responder a la App",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [850, 300],
+      "notes": "Respuesta que recibe la app Android"
+    },
+    {
+      "parameters": {
+        "channel": "#finanzas-app",
+        "text": "🔔 Nuevo evento de la app: {{$json.body.action}}",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "id": "notify-slack",
+      "name": "Notificar en Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [850, 700],
+      "notes": "Opcional: Envía notificación a Slack",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "to": "admin@tudominio.com",
+        "subject": "Nuevos datos financieros recibidos",
+        "emailFormat": "html",
+        "text": "=<h2>Datos Financieros Actualizados</h2>\n<p><strong>Usuario:</strong> {{$json.body.userId}}</p>\n<p><strong>Balance Total:</strong> {{$json.body.data.total_balance}}</p>\n<p><strong>Ingresos:</strong> {{$json.body.data.monthly_income}}</p>\n<p><strong>Gastos:</strong> {{$json.body.data.monthly_expenses}}</p>\n<p><strong>Ahorros:</strong> {{$json.body.data.monthly_savings}}</p>",
+        "options": {}
+      },
+      "id": "send-email",
+      "name": "Enviar Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [850, 600],
+      "notes": "Opcional: Envía email con resumen",
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "Webhook Entrada": {
+      "main": [
+        [
+          {
+            "node": "Es Test?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Son Datos Financieros?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Acceso a Herramientas?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Es Test?": {
+      "main": [
+        [
+          {
+            "node": "Procesar Test",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Son Datos Financieros?": {
+      "main": [
+        [
+          {
+            "node": "Procesar Datos Financieros",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Acceso a Herramientas?": {
+      "main": [
+        [
+          {
+            "node": "Procesar Acceso Herramientas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar Test": {
+      "main": [
+        [
+          {
+            "node": "Responder a la App",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar Datos Financieros": {
+      "main": [
+        [
+          {
+            "node": "Responder a la App",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Guardar en Base de Datos",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Enviar Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar Acceso Herramientas": {
+      "main": [
+        [
+          {
+            "node": "Responder a la App",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Notificar en Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-10-24T00:00:00.000Z",
+  "versionId": "1"
+}
+

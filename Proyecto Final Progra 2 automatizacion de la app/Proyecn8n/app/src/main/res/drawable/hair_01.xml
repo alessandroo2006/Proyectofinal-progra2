@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Base del peinado spiky azul -->
+    <path
+        android:fillColor="#FF0080FF"
+        android:pathData="M32,8 C24,8 18,14 18,22 L18,28 C18,36 24,42 32,42 C40,42 46,36 46,28 L46,22 C46,14 40,8 32,8 Z" />
+
+    <!-- Spikes frontales -->
+    <path
+        android:fillColor="#FF0080FF"
+        android:pathData="M20,16 L22,12 L24,16 L22,18 Z" />
+    <path
+        android:fillColor="#FF0080FF"
+        android:pathData="M40,16 L42,12 L44,16 L42,18 Z" />
+
+    <!-- Spikes laterales -->
+    <path
+        android:fillColor="#FF0080FF"
+        android:pathData="M16,20 L18,16 L20,20 L18,22 Z" />
+    <path
+        android:fillColor="#FF0080FF"
+        android:pathData="M44,20 L46,16 L48,20 L46,22 Z" />
+
+    <!-- Spikes superiores -->
+    <path
+        android:fillColor="#FF0080FF"
+        android:pathData="M28,6 L30,2 L32,6 L30,8 Z" />
+    <path
+        android:fillColor="#FF0080FF"
+        android:pathData="M32,6 L34,2 L36,6 L34,8 Z" />
+
+    <!-- Spike central -->
+    <path
+        android:fillColor="#FF0080FF"
+        android:pathData="M30,4 L32,0 L34,4 L32,6 Z" />
+
+    <!-- Spikes traseros -->
+    <path
+        android:fillColor="#FF0080FF"
+        android:pathData="M24,12 L26,8 L28,12 L26,14 Z" />
+    <path
+        android:fillColor="#FF0080FF"
+        android:pathData="M36,12 L38,8 L40,12 L38,14 Z" />
+
+</vector>

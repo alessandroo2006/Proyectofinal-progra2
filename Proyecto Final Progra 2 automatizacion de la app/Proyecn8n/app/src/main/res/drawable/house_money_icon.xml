@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    
+    <!-- House -->
+    <path
+        android:fillColor="#FF5722"
+        android:pathData="M10,20v-6h4v6h5v-8h3L12,3 2,12h3v8z"/>
+    
+    <!-- Money bills -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M7,15h2v2H7z"/>
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M7,11h2v2H7z"/>
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M15,15h2v2h-2z"/>
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M15,11h2v2h-2z"/>
+</vector>

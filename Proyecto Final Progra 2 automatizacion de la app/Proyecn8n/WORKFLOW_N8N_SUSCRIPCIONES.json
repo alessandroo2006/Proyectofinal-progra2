@@ -1,0 +1,161 @@
+{
+  "name": "Workflow Suscripciones - App Android",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "webhook-test/942559e5-d4e4-4ad6-a384-9fa8f4b0f2f6",
+        "httpMethod": "POST",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "942559e5-d4e4-4ad6-a384-9fa8f4b0f2f6"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.data.herramienta}}",
+              "operation": "equals",
+              "value2": "suscripciones"
+            }
+          ]
+        }
+      },
+      "name": "Es Suscripción?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "mensaje",
+              "value": "Suscripción recibida correctamente"
+            },
+            {
+              "name": "cliente",
+              "value": "={{$json.data.cliente}}"
+            },
+            {
+              "name": "plan",
+              "value": "={{$json.data.plan}}"
+            },
+            {
+              "name": "precio",
+              "value": "={{$json.data.precio}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Procesar Datos",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [650, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\"status\":\"success\",\"message\":\"Suscripción procesada\",\"data\":{\"cliente\":\"{{$json.data.cliente}}\",\"plan\":\"{{$json.data.plan}}\"}}",
+        "options": {}
+      },
+      "name": "Responder a Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\"status\":\"error\",\"message\":\"No es una suscripción\"}",
+        "options": {}
+      },
+      "name": "Error",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [650, 400]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Es Suscripción?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Es Suscripción?": {
+      "main": [
+        [
+          {
+            "node": "Procesar Datos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar Datos": {
+      "main": [
+        [
+          {
+            "node": "Responder a Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "id": "ejemplo_suscripciones",
+  "instrucciones": {
+    "paso_1": "Copia todo el contenido de este archivo",
+    "paso_2": "Abre n8n en tu navegador",
+    "paso_3": "Ve a 'Workflows' → Click en los 3 puntos → 'Import from File' o 'Import from JSON'",
+    "paso_4": "Pega el contenido del archivo",
+    "paso_5": "Haz click en 'Import'",
+    "paso_6": "MUY IMPORTANTE: Activa el workflow (toggle en verde)",
+    "paso_7": "Prueba con el script test_suscripcion_n8n.bat",
+    "nota": "Puedes agregar más nodos después de 'Procesar Datos' para guardar en DB, enviar emails, etc."
+  },
+  "descripcion_nodos": {
+    "Webhook": "Recibe las peticiones POST desde la app Android",
+    "Es_Suscripción": "Verifica que el dato 'herramienta' sea 'suscripciones'",
+    "Procesar_Datos": "Extrae y formatea los datos importantes",
+    "Responder_a_Webhook": "Envía respuesta de éxito a la app",
+    "Error": "Envía respuesta de error si no es una suscripción"
+  },
+  "datos_disponibles": {
+    "accion": "{{ $json.action }}",
+    "userId": "{{ $json.userId }}",
+    "herramienta": "{{ $json.data.herramienta }}",
+    "cliente": "{{ $json.data.cliente }}",
+    "email": "{{ $json.data.email }}",
+    "plan": "{{ $json.data.plan }}",
+    "fecha_inicio": "{{ $json.data.fecha_inicio }}",
+    "fecha_vencimiento": "{{ $json.data.fecha_vencimiento }}",
+    "precio": "{{ $json.data.precio }}",
+    "frecuencia": "{{ $json.data.frecuencia }}"
+  }
+}
+

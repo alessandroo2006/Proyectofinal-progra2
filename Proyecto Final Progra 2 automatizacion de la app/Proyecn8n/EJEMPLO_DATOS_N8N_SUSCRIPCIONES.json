@@ -1,0 +1,60 @@
+{
+  "description": "Ejemplo de datos que recibirás en n8n cuando se guarde una suscripción",
+  "webhook_url": "https://foxyti.app.n8n.cloud/webhook-test/942559e5-d4e4-4ad6-a384-9fa8f4b0f2f6",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "action": "subscription_added",
+    "userId": "123",
+    "timestamp": "1730000000000",
+    "data": {
+      "herramienta": "suscripciones",
+      "cliente": "Juan Pérez",
+      "email": "juan@example.com",
+      "plan": "Netflix Premium",
+      "fecha_inicio": "2025-01-15",
+      "fecha_vencimiento": "2025-10-25",
+      "precio": "Q99.99",
+      "frecuencia": "MENSUAL"
+    }
+  },
+  "ejemplos_adicionales": [
+    {
+      "descripcion": "Suscripción Spotify Anual",
+      "datos": {
+        "herramienta": "suscripciones",
+        "cliente": "María López",
+        "email": "maria@example.com",
+        "plan": "Spotify Premium",
+        "fecha_inicio": "2025-01-20",
+        "fecha_vencimiento": "2026-01-20",
+        "precio": "Q999.00",
+        "frecuencia": "ANUAL"
+      }
+    },
+    {
+      "descripcion": "Suscripción Gym Trimestral",
+      "datos": {
+        "herramienta": "suscripciones",
+        "cliente": "Carlos Ruiz",
+        "email": "carlos@example.com",
+        "plan": "Gimnasio VIP",
+        "fecha_inicio": "2025-02-01",
+        "fecha_vencimiento": "2025-05-01",
+        "precio": "Q450.00",
+        "frecuencia": "TRIMESTRAL"
+      }
+    }
+  ],
+  "notas": [
+    "El campo 'action' siempre será 'subscription_added' cuando se agregue una suscripción",
+    "El campo 'userId' es el ID del usuario logueado en la app",
+    "El campo 'timestamp' contiene el momento exacto del evento",
+    "Las fechas están en formato ISO: yyyy-MM-dd",
+    "El precio incluye el símbolo de la moneda configurada",
+    "La frecuencia puede ser: MENSUAL, TRIMESTRAL o ANUAL"
+  ]
+}
+

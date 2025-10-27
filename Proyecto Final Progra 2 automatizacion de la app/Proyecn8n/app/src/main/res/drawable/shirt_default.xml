@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Camiseta blanca básica -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M24,42 L40,42 L40,58 L24,58 Z" />
+
+    <!-- Cuello de la camiseta -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M30,42 L34,42 L34,44 L30,44 Z" />
+
+    <!-- Mangas (pequeñas) -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M20,44 L24,44 L24,50 L20,50 Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M40,44 L44,44 L44,50 L40,50 Z" />
+
+    <!-- Detalles del cuello -->
+    <path
+        android:fillColor="#FFE0E0E0"
+        android:pathData="M30,42 L34,42 L34,43 L30,43 Z" />
+
+</vector>

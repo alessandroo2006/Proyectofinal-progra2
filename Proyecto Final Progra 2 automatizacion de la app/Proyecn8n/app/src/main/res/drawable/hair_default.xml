@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Peinado corto marrón -->
+    <path
+        android:fillColor="#FF8B4513"
+        android:pathData="M32,8 C24,8 18,14 18,22 L18,28 C18,36 24,42 32,42 C40,42 46,36 46,28 L46,22 C46,14 40,8 32,8 Z" />
+
+    <!-- Mechones delanteros -->
+    <path
+        android:fillColor="#FF8B4513"
+        android:pathData="M22,18 L20,16 L22,14 L24,16 Z" />
+    <path
+        android:fillColor="#FF8B4513"
+        android:pathData="M42,18 L44,16 L42,14 L40,16 Z" />
+
+    <!-- Mechones laterales -->
+    <path
+        android:fillColor="#FF8B4513"
+        android:pathData="M16,24 L14,22 L16,20 L18,22 Z" />
+    <path
+        android:fillColor="#FF8B4513"
+        android:pathData="M48,24 L50,22 L48,20 L46,22 Z" />
+
+    <!-- Mechón superior -->
+    <path
+        android:fillColor="#FF8B4513"
+        android:pathData="M30,6 L32,4 L34,6 L32,8 Z" />
+
+</vector>

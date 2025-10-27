@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Marco izquierdo de las gafas -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M22,18 L28,18 L28,24 L22,24 Z" />
+
+    <!-- Marco derecho de las gafas -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M36,18 L42,18 L42,24 L36,24 Z" />
+
+    <!-- Lente izquierda -->
+    <path
+        android:fillColor="#FF333333"
+        android:pathData="M23,19 L27,19 L27,23 L23,23 Z" />
+
+    <!-- Lente derecha -->
+    <path
+        android:fillColor="#FF333333"
+        android:pathData="M37,19 L41,19 L41,23 L37,23 Z" />
+
+    <!-- Puente de las gafas -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M30,20 L34,20 L34,22 L30,22 Z" />
+
+    <!-- Patillas (pequeñas) -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M20,20 L22,20 L22,21 L20,21 Z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M42,20 L44,20 L44,21 L42,21 Z" />
+
+    <!-- Reflejo en lente izquierda -->
+    <path
+        android:fillColor="#FF666666"
+        android:pathData="M23,19 L25,19 L25,21 L23,21 Z" />
+
+    <!-- Reflejo en lente derecha -->
+    <path
+        android:fillColor="#FF666666"
+        android:pathData="M39,19 L41,19 L41,21 L39,21 Z" />
+
+</vector>
